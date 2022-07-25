@@ -1,0 +1,21 @@
+html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgb(183, 103, 103);
+  color: white;
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+}
+
+#navigation {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+}
