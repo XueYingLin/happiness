@@ -19,3 +19,32 @@ h1 {
     display: grid;
     grid-template-columns: auto 1fr auto;
 }
+
+.card {
+    border: 1px solid #ffffff10;
+    border-radius: 15px;
+    background-color: #ffffff10;
+    padding: 15px;
+    margin: 15px;
+}
+
+h2 {
+    margin: 0px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: normal;
+    padding-bottom: 10px;
+}
+
+.labels text {
+    fill: white;
+    text-anchor: end;
+}
+
+.bars rect {
+    fill: steelblue;
+}
+  
+.bars rect:hover {
+    fill: orange;
+}

@@ -4,29 +4,27 @@
   <head>
     <title>Happiness</title>
     <link rel="stylesheet" href="index.css" />
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="index.js"></script>
   </head>
 
-  <body onload="renderCurrentPage();">
+  <body onload="loadPage();">
     <h1 id="title">Title</h1>
-    <div id="content"></div>
     <div id="navigation">
       <span>
         <button class="iconButton" id="prev" onClick="prevPage();">
           <img width="32" src="image/left.svg" />
         </button>
+        <span id="prevDescription"></span>
       </span>
       <span></span>
       <span>
+        <span id="nextDescription"></span>
         <button class="iconButton" id="next" onClick="nextPage();">
           <img width="32" src="image/right.svg" />
         </button>
       </span>
     </div>
-
-    <div id="cardTemplate" style="display: none">
-      <h2>wefwef</h2>
-      <svg></svg>
-    </div>
+    <div id="content"></div>
   </body>
 </html>
