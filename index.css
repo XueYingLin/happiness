@@ -1,6 +1,6 @@
 html {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: rgb(183, 103, 103);
+  background-color: rgb(23, 20, 20);
   color: white;
 }
 
@@ -11,13 +11,29 @@ html {
     cursor: pointer;
 }
 
+text {
+    fill: white;
+}
+
+.axisLabel {
+    font-size: 11pt;
+}
+
+.annotation-note-content text {
+    font-size: 11pt;
+}
+
 h1 {
     text-align: center;
 }
 
 #navigation {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto 1fr auto auto;
+}
+
+#navigation span {
+    align-self: center;
 }
 
 .card {
@@ -25,7 +41,7 @@ h1 {
     border-radius: 15px;
     background-color: #ffffff10;
     padding: 15px;
-    margin: 15px;
+    margin: 10px;
 }
 
 h2 {
@@ -41,10 +57,67 @@ h2 {
     text-anchor: end;
 }
 
-.bars rect {
+/* .bars rect {
     fill: steelblue;
-}
+} */
   
 .bars rect:hover {
     fill: orange;
+}
+
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-template-areas:
+        "a b"
+        "a c"
+        "d e"
+        "d f";
+}
+
+.topChart {
+    grid-area: a;
+}
+
+.topControls {
+    grid-area: b;
+    min-width: 250px;
+}
+
+.topDetail {
+    grid-area: c;
+    min-width: 250px;
+}
+
+.bottomChart {
+    grid-area: d;
+}
+
+.bottomControls {
+    grid-area: e;
+    min-width: 250px;
+}
+
+.bottomDetail {
+    grid-area: f;
+    min-width: 250px;
+}
+
+#scatterDetail {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+    gap: 10px;
+}
+
+#scatterControls {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+    gap: 10px;
+}
+
+.smalltext {
+    font-size: 9pt;
 }

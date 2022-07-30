@@ -5,25 +5,22 @@
     <title>Happiness</title>
     <link rel="stylesheet" href="index.css" />
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <script src="index.js"></script>
   </head>
 
   <body onload="loadPage();">
     <h1 id="title">Title</h1>
     <div id="navigation">
-      <span>
-        <button class="iconButton" id="prev" onClick="prevPage();">
-          <img width="32" src="image/left.svg" />
-        </button>
-        <span id="prevDescription"></span>
-      </span>
+      <button class="iconButton" id="prev" onClick="prevPage();">
+        <img width="25" src="image/left.svg" />
+      </button>
+      <span id="prevDescription"></span>
       <span></span>
-      <span>
-        <span id="nextDescription"></span>
-        <button class="iconButton" id="next" onClick="nextPage();">
-          <img width="32" src="image/right.svg" />
-        </button>
-      </span>
+      <span id="nextDescription"></span>
+      <button class="iconButton" id="next" onClick="nextPage();">
+        <img width="25" src="image/right.svg" />
+      </button>
     </div>
     <div id="content"></div>
   </body>
