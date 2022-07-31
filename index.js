@@ -16,17 +16,32 @@ const YEARS = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]
 let currentTimer = undefined
 
 const PAGE_SETTINGS = [
-  {
-    title: 'Introduction',
-    tiles: {
-      topChart: {
-        title: 'About this Narrative Visualization',
-        render: renderAbout,
-      },
-    },
-  },
+  // {
+  //   title: 'World Happiness',
+  //   tiles: {
+  //     topChart: {
+  //       render: renderAbout,
+  //     },
+  //   },
+  // },
   {
     title: 'Most and Least Happy',
+    description: `
+    <p>
+      This slideshow shows data from the <a href="https://worldhappiness.report/">World Happiness Report</a>
+      for various countries. The World Happiness Report collects an <i>Average Life Evaluation</i> value ("score") for each
+      country. The collection methodology for this data for 2022 can be found <a href="https://worldhappiness.report/ed/2022/happiness-benevolence-and-trust-during-covid-19-and-beyond/#measuring-and-explaining-national-differences-in-life-evaluations">here</a>.
+      The score for each country is a three year average.
+    </p>
+    <p>
+      This scene shows the 5 most happy and least happy countries for the most recent survey year (2022), demonstrating
+      the significant variance between life evaluation scores for the highest and lowest ranking countries.
+    </p>
+    <p>
+      Countries marked with an asterisk (*) have missing survey data for some years. In these years, the World Happiness
+      Report uses forward the score from the last surveyed year.  
+    </p>
+    `,
     tiles: {
       topChart: {
         title: 'Most Happy Countries (2022)',
@@ -40,6 +55,12 @@ const PAGE_SETTINGS = [
   },
   {
     title: 'Change Over Time',
+    description: `
+    <p>
+      The 10 countries with the highest average life evaluation have changed over the last 7 years. This scene provides
+      an animated visualization showing how the top ranked countries have changed position between 2015 and 2022.
+    </p>
+    `,
     tiles: {
       topChart: {
         title: 'Top 10 Over Time',
@@ -49,6 +70,24 @@ const PAGE_SETTINGS = [
   },
   {
     title: 'Population, GDP, and Happiness',
+    description: `
+    <p>
+      Population and wealth are contributing factors to happiness. In this scene, we use
+      <a href="https://data.worldbank.org/">Data from the World Bank</a> to allow interactive exploration of how
+      population size and gross domestic product (GDP) in US Dollars per capita affect happiness. Countries are
+      represented by colored circles, the size of which represents the gross domestic product (GDP) in
+      current US Dollars per capita. The x-axis is the average life evaluation ("score"), and the y-axis is
+      population size on a logarithmic scale. 
+    </p>
+    <p>
+      You can interact with this scene by clicking on a circle to see details about a specific country, by changing
+      whether to annotate the 5 most or least happy countries, by changing the year, or by adjusting the percentile
+      of GDP per capita shown using the GDP slider.
+    </p>
+    <p>
+      Note: World Bank data does not yet cover population and GDP data for 2022, so it's not included here.
+    </p>
+    `,
     tiles: {
       topChart: {
         render: renderScatterPlot,
@@ -96,6 +135,13 @@ async function renderCurrentPage() {
     if (tileData) {
       renderCard(tileData.title, tileData.render, key)
     }
+  }
+
+  if (pageSettings.description) {
+    d3.select('#content')
+      .append('div')
+      .attr('id', 'pageDescription')
+      .html(pageSettings.description)
   }
 }
 
@@ -235,14 +281,6 @@ function hashCode(string) {
     hash = hash & hash // Convert to 32bit integer
   }
   return hash
-}
-
-function renderAbout(div) {
-  div
-    .append('p')
-    .text(
-      'This visualization shows data about the Happiness Index of various countries.'
-    )
 }
 
 let data = undefined
@@ -421,7 +459,7 @@ function renderScatterPlot(div) {
   svg
     .append('text')
     .attr('class', 'axisLabel')
-    .text('Happiness Index')
+    .text('Average Life Evaluation')
     .attr('text-anchor', 'middle')
     .attr('y', 380)
     .attr('x', 50 + 700 / 2)
